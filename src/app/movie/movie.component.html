@@ -1,5 +1,9 @@
+<form>
+  <input type="text" [(ngModel)]="filterTitle" name="title" placeholder="Search by title" />
+</form>
+<div class="filter-header" *ngIf="filterTitle?.length > 0">Filtering movies by title: {{ filterTitle }}</div>
 <div class="cards-container" layout-wrap layout="row">
-  <mat-card flex="30" *ngFor="let movie of movies; let idx = index" class="movie-card">
+  <mat-card flex="20" *ngFor="let movie of movies | filter: filterTitle; let idx = index" class="movie-card">
     <img src="{{movie.img}}">
     <p>Price: {{ movie.price | currency }}</p>
     <mat-card-header>
@@ -12,7 +16,8 @@
     <mat-card-content>
       <h6>{{ movie.descrShort }}</h6>
       <div class="button-row">
-        <button mat-button color="primary" (click)="submit(movie)">Purchase Movie</button>
+        <button mat-button color="primary" *ngIf="!(movie.selected)" (click)="submit(movie)">Purchase Movie</button>
+        <button mat-button color="danger" *ngIf="(movie.selected) && (mode == 'deleteMode')" (click)="deleteMovie(movie)">Delete Movie</button>
       </div>
     </mat-card-content>
 

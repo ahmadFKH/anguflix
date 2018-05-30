@@ -5,5 +5,6 @@ export class Movie {
     public year : number;
     public price: number;
     public descrShort: string;
+    public selected : boolean = false;
     constructor() {}
 }

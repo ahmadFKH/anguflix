@@ -1,16 +1,20 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MoviesService } from '../movies.service';
 import { Movie } from '../movie';
+import { FilterPipe } from '../filter.pipe'
 
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.scss']
+  styleUrls: ['./movie.component.scss'],
+  pipes: [FilterPipe]
 })
 export class MovieComponent implements OnInit {
 
   @Input() movies = new Array<Movie>();
+  @Input() mode : string;
   @Output() movieAdded: EventEmitter<Movie> = new EventEmitter();
+  @Output() movieDeleted: EventEmitter<Movie> = new EventEmitter();
   //filterTerm : string;
   //dateFormat = 'fullDate';
   selectedMovie:Movie;
@@ -24,6 +28,10 @@ export class MovieComponent implements OnInit {
 
   submit(movie:Movie) {
     this.movieAdded.emit(movie);
+  }
+
+  deleteMovie(movie: Movie) {
+    this.movieDeleted.emit(movie);
   }
 
 }

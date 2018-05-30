@@ -15,6 +15,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     SearchComponent,
     AddMovieComponent,
     DeleteMovieComponent,
-    BudgetComponent
+    BudgetComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

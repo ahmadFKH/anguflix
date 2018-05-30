@@ -1,5 +1,5 @@
 import { MoviesService } from '../movies.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../user'
 import { Movie } from '../movie';
 
@@ -10,16 +10,25 @@ import { Movie } from '../movie';
 })
 export class UserComponent implements OnInit {
 
-  userMovies = Array<Movie>();
-  user: User = new User();
+  userMovies = Array<any>();
+  @Input() user: User;
+  mode = 'regularMode';
 
-  constructor(private moviesService : MoviesService) { 
-    this.user.budget = moviesService.getBudget();
+  constructor(private moviesService: MoviesService) {
     this.userMovies = moviesService.getUserMovies();
   }
 
   ngOnInit() {
   }
 
+  handleDeletedMovie(movie : Movie) {
+    this.moviesService.deleteMovie(movie.id, this.userMovies);
+    this.moviesService.increaseBudget(movie,this.user);
+    movie.selected = false;
+  }
 
+  toggleMode() {
+    this.mode == 'regularMode' ? this.mode = 'deleteMode' : this.mode = 'regularMode';
+  }
+  
 }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { User } from './user'
+import { MoviesService } from './movies.service'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  
+  user: User = new User;
+
+  constructor(private moviesService:MoviesService) {
+    this.user.budget = this.moviesService.getBudget();
+  }
+
 }

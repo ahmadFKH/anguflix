@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Movie } from '../movie';
 
 @Component({
   selector: 'app-budget',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BudgetComponent implements OnInit {
 
-  constructor() { }
+  @Input() movies: Array<Movie>;
+  @Input() budget:number;
+
+  constructor() {}
 
   ngOnInit() {
   }

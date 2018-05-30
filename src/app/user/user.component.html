@@ -1,15 +1,12 @@
-<div class="container">
-  <div class="title-container">
-    <h2>My Movies Collection</h2>
-    <app-search></app-search>
-    <!--<button mat-button (click)="toggleDate()">
-      <span *ngIf="dateFormat == 'shortDate'">+</span>
-      <span *ngIf="dateFormat == 'fullDate'">-</span>
-    </button>-->
-    <h4 class="Budget">Budget: {{user.budget | currency}}</h4>
-  </div>
-  <div class="list-container">
-    <h4 *ngIf = "userMovies.length == 0">Select movies from below to add to your collection</h4>
-    <app-movie [movies]="userMovies"></app-movie>
-  </div>
+<div class="list-container">
+  <h4 *ngIf="userMovies.length == 0">Select movies from below to add to your collection</h4>
+  <button mat-button (click)="toggleMode()">
+      <span *ngIf="mode == 'regularMode'">
+        <i class="fa fa-trash-o"></i>trash
+      </span>
+      <span *ngIf="mode == 'deleteMode'">
+        <i class="fa fa-check" aria-hidden="true"></i>V
+      </span>
+    </button>
+  <app-movie [movies]="userMovies" [mode]="mode" (movieDeleted)="handleDeletedMovie($event)"></app-movie>
 </div>
