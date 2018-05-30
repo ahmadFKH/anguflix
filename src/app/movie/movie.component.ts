@@ -6,27 +6,26 @@ import { FilterPipe } from '../filter.pipe'
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.scss'],
-  pipes: [FilterPipe]
+  styleUrls: ['./movie.component.scss']
 })
 export class MovieComponent implements OnInit {
 
   @Input() movies = new Array<Movie>();
-  @Input() mode : string;
+  @Input() mode: string;
   @Output() movieAdded: EventEmitter<Movie> = new EventEmitter();
   @Output() movieDeleted: EventEmitter<Movie> = new EventEmitter();
   //filterTerm : string;
   //dateFormat = 'fullDate';
-  selectedMovie:Movie;
+  selectedMovie: Movie;
 
-  constructor(private moviessService : MoviesService) {
+  constructor(private moviessService: MoviesService) {
     //this.movies = moviessService.getMovies();
-   }
+  }
 
   ngOnInit() {
   }
 
-  submit(movie:Movie) {
+  submit(movie: Movie) {
     this.movieAdded.emit(movie);
   }
 

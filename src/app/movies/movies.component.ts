@@ -10,7 +10,7 @@ import { User } from '../user';
 })
 export class MoviesComponent implements OnInit {
 
-  allMovies: Array<Movie>;
+  allMovies: Array<any>;
   @Input() user: User;
 
   constructor(private moviesService: MoviesService) {
