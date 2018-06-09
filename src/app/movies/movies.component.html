@@ -3,6 +3,7 @@
     <h2>All Movies</h2>
   </div>
   <div class="list-container">
+    <div class="spinner" *ngIf = "allMovies.length == 0"></div>
     <app-movie [movies] = "allMovies" (movieAdded)="handleAddMovie($event)"></app-movie>
   </div>
 </div>

@@ -16,6 +16,15 @@ import {MatButtonModule} from '@angular/material/button';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './filter.pipe';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
+import { ShowMovieComponent } from './show-movie/show-movie.component';
+import { MovieRoutingModule } from './movie-routing.module';
+import { HomeComponent } from './home/home.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -27,7 +36,9 @@ import { FilterPipe } from './filter.pipe';
     AddMovieComponent,
     DeleteMovieComponent,
     BudgetComponent,
-    FilterPipe
+    FilterPipe,
+    ShowMovieComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +48,13 @@ import { FilterPipe } from './filter.pipe';
     MatCardModule,
     FormsModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MovieRoutingModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    HttpClientModule,
+    MatGridListModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

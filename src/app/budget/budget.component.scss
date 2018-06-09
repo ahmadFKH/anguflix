@@ -1,0 +1,13 @@
+.budget-container {
+    position: absolute;
+    top: 0px;
+    right: 20px;
+}
+.warning {
+    animation-name: example;
+    animation-duration: 4s;  
+}
+@keyframes example {
+    from {color: white;}
+    to {color: red;}
+}

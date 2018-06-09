@@ -1,2 +1,4 @@
-<h4 class="Budget">Budget: {{budget | currency}}</h4>
-<p *ngIf="budget < 5" ngClass = "Warning">Your budget is almost finished</p>
+<div class="budget-container">
+    <h4 class="Budget">Budget: {{budget | currency}}</h4>
+    <p *ngIf="budget < 5" ngClass="warning"><mark>Your budget is almost finished</mark></p>
+</div>

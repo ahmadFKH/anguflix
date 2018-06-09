@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MoviesService } from '../movies.service';
 import { Movie } from '../movie';
 import { FilterPipe } from '../filter.pipe'
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie',

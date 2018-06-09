@@ -1,18 +1,28 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Movie} from './movie'
+import { Movie } from './movie'
 
 @Pipe({
-  name: 'filter'
+  name: 'filter',
+  pure: false
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(movies: Array<Movie>, filterTitle: string): Array<Movie>{
-    if (filterTitle == undefined) {
+  transform(movies: Array<Movie>, filterTitle: string, filterYear: number): Array<Movie> {
+    if ((filterTitle == undefined) && (filterYear == undefined)) {
       return movies;
-    }
-    return movies.filter(function (movie) {
-      return movie.title.toLowerCase().includes(filterTitle.toLowerCase());
-    })
-  }
+    } else if (filterYear == undefined) {
+      return movies.filter(function (movie) {
+        return movie.title.toLowerCase().includes(filterTitle.toLowerCase());
+      })
+    } else if (filterTitle == undefined) {
+      return movies.filter(function (movie) {
+        return movie.year == filterYear;
+      })
+    } else {
+      return movies.filter(function (movie) {
+        return movie.title.toLowerCase().includes(filterTitle.toLowerCase()) && (movie.year == filterYear);
+      })
 
+    }
+  }
 }

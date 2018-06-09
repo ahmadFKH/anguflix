@@ -1,0 +1,21 @@
+<div class="cards-container" layout-wrap layout="row">
+  <div class="movie-card">
+  <mat-card flex='30'>
+    <img src='{{movie.imgUrl}}'>
+    <h3>Director: {{ movie.director }}</h3>
+    <mat-card-header>
+    </mat-card-header>
+    <h4>{{ movie.fullDescription }}</h4>
+  </mat-card>
+  <mat-card-content *ngFor="let review of movie.reviews">
+    <h3>Reviews:  <br>
+      <h4>Name: {{review.name}}</h4>
+      <h4>Review: {{review.text}}</h4>
+      <h4>Rating: {{review.rating}}</h4>
+    </h3>
+  </mat-card-content>
+  <div class="button-row">
+    <button mat-button color="primary" *ngIf="!(movie.selected)" (click)="purchaseMovie(movie)">Purchase Movie</button>
+    <button mat-button color="primary" (click)="navigate()">Home Page  </button>
+  </div>
+</div>

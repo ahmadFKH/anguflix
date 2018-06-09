@@ -1,13 +1,17 @@
-<div class="container">
-    <div class="title-container">
-        <h2>My Movies Collection</h2>
-        <!--<button mat-button (click)="toggleDate()">
+<html>
+
+<body>
+    <div class="container">
+        <div class="title-container">
+            <h2>My Movies Collection</h2>
+            <!--<button mat-button (click)="toggleDate()">
             <span *ngIf="dateFormat == 'shortDate'">+</span>
             <span *ngIf="dateFormat == 'fullDate'">-</span>
           </button>-->
-        <app-budget [budget]="user.budget"></app-budget>
+            <app-budget [budget]="user.budget"></app-budget>
+        </div>
     </div>
-</div>
-<app-user [user]="user"></app-user>
-<hr>
-<app-movies [user]="user"></app-movies>
+    <router-outlet></router-outlet>
+</body>
+
+</html>
