@@ -18,6 +18,8 @@ export class MovieComponent implements OnInit {
   //filterTerm : string;
   //dateFormat = 'fullDate';
   selectedMovie: Movie;
+  filterYear: string;
+  filterTitle: string;
 
   constructor(private moviessService: MoviesService) {
     //this.movies = moviessService.getMovies();

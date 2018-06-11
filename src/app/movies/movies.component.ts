@@ -4,6 +4,8 @@ import { MoviesService } from '../movies.service';
 import { User } from '../user';
 import { UserService } from '../user.service';
 
+// const sortBy = require('sort-array')
+
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
@@ -21,6 +23,7 @@ export class MoviesComponent implements OnInit {
     this.moviesService.getMovies().subscribe(
       (data => {
         this.allMovies = JSON.parse(JSON.stringify(data));
+        this.allMovies.sort(function(a,b) {return (a.year > b.year) ? 1 : ((b.year > a.year) ? -1 : 0);} );
       }));
   }
 

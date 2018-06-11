@@ -7,20 +7,20 @@ import { Movie } from './movie'
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(movies: Array<Movie>, filterTitle: string, filterYear: number): Array<Movie> {
-    if ((filterTitle == undefined) && (filterYear == undefined)) {
+  transform(movies: Array<Movie>, filterTitle: string, filterYear: string): Array<Movie> {
+    if ((filterTitle === undefined || '' ) && (filterYear === undefined )) {
       return movies;
-    } else if (filterYear == undefined) {
+    } else if (filterYear == undefined ) {
       return movies.filter(function (movie) {
         return movie.title.toLowerCase().includes(filterTitle.toLowerCase());
       })
-    } else if (filterTitle == undefined) {
+    } else if (filterTitle === undefined || '') {
       return movies.filter(function (movie) {
-        return movie.year == filterYear;
+        return movie.year == Number(filterYear);
       })
     } else {
       return movies.filter(function (movie) {
-        return movie.title.toLowerCase().includes(filterTitle.toLowerCase()) && (movie.year == filterYear);
+        return movie.title.toLowerCase().includes(filterTitle.toLowerCase()) && (movie.year == Number(filterYear));
       })
 
     }
